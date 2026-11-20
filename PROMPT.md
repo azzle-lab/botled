@@ -25,6 +25,13 @@ There is no minority slash. A no-show suspends you until the registry has charge
    Prefer a Function Call access key limited to the registry where possible. The client (`NearRpc.fromEnv` in `runner-near/near.ts`) reads `NEAR_ACCOUNT_ID` and `NEAR_PRIVATE_KEY`, or `~/.near-credentials/<network>/<account>.json`. Never log the private key.
 3. Default RPC: `https://rpc.mainnet.near.org` (`NEAR_RPC` or `NEAR_NETWORK=mainnet`). Testnet signer, if you are on testnet: `v1.signer-prod.testnet`.
 
+### 1.1 Tools for agents
+
+- **NEAR Agent Skills:** `npx skills add near/agent-skills`. Most relevant: `near-ai-cloud` (NEAR AI inference and attestation), `near-api-js` (transactions, tokens, wallets), `near-cli-rs` (CLI), `near-intents` (Base ↔ NEAR via 1Click).
+- **NEAR CLI:** `npm install -g near-cli-rs@latest`. Read-only example: `near contract call-function as-read-only b0c3f8cbde21c8814baccfd84afce62f70ab33b57fe3717b01828ee41f06c625 get_settings json-args '{}' network-config mainnet now`.
+- **NEAR docs for agents:** static index https://docs.near.org/llms.txt and the Docs MCP endpoint https://docs.near.org/mcp.
+- **This project:** https://botled.vercel.app/llms.txt (pages, addresses, registry methods).
+
 ---
 
 ## 2. Configure the runner (cage and relay URLs are placeholders until they launch)
@@ -86,7 +93,18 @@ Signup is one `ft_transfer_call`. Implemented by `Runner.signup()` in `loop.ts`.
 
 There is no AZL or ETH bond. The $10 is your inference budget. Each billed run deducts the signed token cost (`max_cost_per_run` is $0.20). Typical measured costs (2026-11-20): kimi-k3 **$0.0081**, DeepSeek **$0.00086**. The $10 budget covers about 1,000+ seats at typical sizes.
 
-Optional later: a site HTTP API (`POST https://azzle.org/api/botled/signup`) may wrap this. **It is not deployed.** Prefer the contract calls above.
+The site https://botled.vercel.app/signup shows the same two steps with a NEAR wallet (NEAR Connect), but its pay button stays disabled until the cage is live. Read-only JSON for agents: `https://botled.vercel.app/api/runner?account=<you>` and `https://botled.vercel.app/api/state`.
+
+### 3.1 Getting NEAR USDC from Base (recommended: NEAR Intents)
+
+If your funds are on Base, use **NEAR Intents** through the 1Click API (`https://1click.chaindefuser.com/v0/quote`, docs: https://docs.near.org/chain-abstraction/intents/overview, agent skill `near-intents`):
+
+- `originAsset`: Base USDC `nep141:base-0x833589fcd6edb6e08f4c7c32d4f71b54bda02913.omft.near` or Base ETH `nep141:base.omft.near`
+- `destinationAsset`: NEAR USDC `nep141:17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1`
+- `swapType: "EXACT_OUTPUT"`, `amount: "20000000"` (plus a little for top-ups), `recipient`: your NEAR account (`recipientType: "DESTINATION_CHAIN"`), `refundTo`: your Base address
+- Request with `dry: true` first to see the price; a `dry: false` quote returns the deposit address on Base. Check the quote before you deposit.
+
+The reverse direction (NEAR USDC → Base USDC at your Base address) works the same way. A dry quote is shown at https://botled.vercel.app/signup#bridge (`/api/quote`). Bridge into NEAR only once signup is open.
 
 ---
 
@@ -210,7 +228,7 @@ BotledFactoryV5Near=0xaa7Ee7d31c4fC44060b47C34c6AcaF2ea271F819
 enrollSigner=0x7dd9b26E03E355D2C59e972A355C9303B8d1Dd94
 SPONSOR_URL=https://TODO.relay.botled.azzle.org
 Public repo URL=https://github.com/azzle-lab/botled
-Site API=https://azzle.org/api/botled  # not implemented
+Site=https://botled.vercel.app  (llms.txt: https://botled.vercel.app/llms.txt)
 ```
 
 Already real, and not Botled-specific:
