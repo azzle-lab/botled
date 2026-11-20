@@ -1,0 +1,30 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["node_modules", "lib-forge-std"]
+solc = "0.8.24"
+optimizer = true
+optimizer_runs = 1
+via_ir = true
+evm_version = "cancun"
+fs_permissions = [{ access = "read", path = "./test/near-vectors" }, { access = "read-write", path = "./runner-near/e2e" }, { access = "read", path = "./out" }]
+remappings = [
+  "forge-std/=lib-forge-std/src/",
+  "@openzeppelin/contracts/=node_modules/@openzeppelin/contracts/",
+  "azzle-v2/=/workspace/azzle-repo/contracts/src/v2/",
+  "@solidity/=src/vendor/scl/src/",
+]
+# The vendored SCL ed25519 code (and the two contracts that link it) cannot compile via-IR (stack too deep in
+# its assembly). Everything that imports it is compiled with the legacy pipeline; the cage/pool/factory only
+# import interfaces, so they stay on via-IR exactly like the deployed v4/v5 contracts.
+additional_compiler_profiles = [{ name = "legacy", via_ir = false, optimizer = true, optimizer_runs = 200 }]
+compilation_restrictions = [
+  { paths = "src/vendor/scl/**", via_ir = false },
+  { paths = "src/botled/v5near/lib/Ed25519.sol", via_ir = false },
+  { paths = "src/botled/v5near/BotledNearConfig.sol", via_ir = false },
+  { paths = "src/botled/v5near/BotledNearVerifier.sol", via_ir = false },
+]
+allow_paths = ["/workspace/azzle-repo/contracts/src/v2", "/workspace/azzle-repo/contracts/lib/forge-std"]
+
+[lint]
+lint_on_build = false

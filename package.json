@@ -1,0 +1,8 @@
+{
+  "name": "botled",
+  "private": true,
+  "description": "Botled contracts. Azzle sources stay outside this tree.",
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.0.2"
+  }
+}

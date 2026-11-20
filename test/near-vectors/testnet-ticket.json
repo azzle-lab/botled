@@ -1,0 +1,15 @@
+{
+  "note": "Real NEAR testnet run of runner-near/tools/testnet-ticket.ts on 2026-11-20 (faucet accounts, no real funds). Registry = near/build-wasm.sh output sha256 1e24c2426540b706da7341ba3538e0fd77cf29bd9541787cb3567d38352b4c0b. MPC = v1.signer-prod.testnet.",
+  "registry": "botled-reg-6546e0a1.testnet",
+  "runner": "botled-run-3e8b82b1.testnet",
+  "runnerBase": "0x2cac67eb1690899379283cf5a04b531266bd1881",
+  "poolDomain": { "chainId": 84532, "pool": "0x3333333333333333333333333333333333333333" },
+  "ticket": {
+    "epoch": 1, "noShowsCovered": 0, "validUntil": 1795745561,
+    "sessionKey": "0x5e55100000000000000000000000000000000001",
+    "nearAccount": "0xabc97d4e134354fbe368359257896684655cb9354b8c448ce417c248ef1a335e",
+    "digest": "0x2efee038ee3429f8b93da850dd8206f9217d930647fdf91d57b51bc51770e09c"
+  },
+  "recoveredSigner": "0x67bFa3448085d641d9B7a669e734ae1cdbF8803C",
+  "derivedEnrollSigner": "0x67bfa3448085d641d9b7a669e734ae1cdbf8803c"
+}

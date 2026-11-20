@@ -1,0 +1,13 @@
+{
+ "upgrade_tx": "Fp1qX1hEAoiP6QwMf4t5oKwYosCsnKE3XhymFHXytcsU",
+ "code_hash": "CjkRP25Vja4kBsAHo5pawjeTCZytazCP4txPcYjEEdux",
+ "sha256": "ae640bb345f57a4caed813c7de316a0c7d108efc5a2ee43f3457a95de9685067",
+ "checks": {
+  "code_hash": true,
+  "pending_unchanged": true,
+  "settings_unchanged": true,
+  "owner_unchanged": true,
+  "azzle_base_matches_v1_signer": true,
+  "wrong_base_rejected": true
+ }
+}

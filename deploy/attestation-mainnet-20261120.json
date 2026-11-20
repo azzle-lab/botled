@@ -1,0 +1,77 @@
+{
+  "ok": true,
+  "checked": 4,
+  "failed": 0,
+  "results": [
+    {
+      "ok": true,
+      "target": "gateway",
+      "algo": "ecdsa",
+      "nonce": "69d3e3a2a4568fd07e2e08800b6163626f7b43618754059968729c5d3cac5a57",
+      "key": "0xb98a789cdc4817275f5155593ba73ef2a957e779",
+      "matches_pin": true,
+      "tcb": "UpToDate",
+      "compose_hash": "53cd435edbc129f848ed0ddce301f7f192446fe39683713a38537820bea7e1fb",
+      "mrtd": "7fe60787222bd394cb516abca2435f22f035ab2cc9c0a4b4b3b148e46297f3d931a237b72f359052c6e657d8c1409173"
+    },
+    {
+      "ok": true,
+      "target": "gateway",
+      "algo": "ed25519",
+      "nonce": "25f7751424a433327e4034bc30203e44b4cbbb9fb4e72e704a05e83cfc5424ce",
+      "key": "40599fb284f43953bb356b09080fd803c960fc10285ad90eca462ca711ad4acb",
+      "matches_pin": true,
+      "tcb": "UpToDate",
+      "compose_hash": "53cd435edbc129f848ed0ddce301f7f192446fe39683713a38537820bea7e1fb",
+      "mrtd": "7fe60787222bd394cb516abca2435f22f035ab2cc9c0a4b4b3b148e46297f3d931a237b72f359052c6e657d8c1409173"
+    },
+    {
+      "ok": true,
+      "target": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "algo": "ecdsa",
+      "nonce": "a2f75db69be59f1a4d95b690f19b8074bfe8b146b6cd58e5a78e71724e9e4de4",
+      "key": "0xfe0071895500a9755c18044948ab4f4e1a7f337e",
+      "matches_pin": true,
+      "tcb": "UpToDate",
+      "compose_hash": "e3902667a26282dd8b4015a901848c521b20243a155a457148f88acf48a45959",
+      "mrtd": "e107136c99ae1745ab299e9462927890b7b1c984d5ef53fa5830584ad4246db663fdf96563b913e9e2471906b26f7aae",
+      "compose_manager": {
+        "tcb": "UpToDate",
+        "model_file": "prod/deepseek-v4.1-flash-1017-vllm-dep4x2.yaml",
+        "file_sha256": "ddd3773b7fac6b85c9697b7b54085c6e8e23340d73d41fefa40e94daa9976fce",
+        "commit": "cdc7ce7d1ec28e93d28aef60b305eb9331261631"
+      },
+      "nvidia": {
+        "arch": "HOPPER",
+        "gpus": 8,
+        "overall": true,
+        "eat_nonce_ok": true,
+        "nvidia_chain": "C=US, O=NVIDIA Corporation, CN=NVIDIA Attestation Service CA 001 sha256=2D:F8:90:7C:F4:D6:C2:77:B8:55:D4:07:EC:17:8A:64:99:30:A8:E7:3F:72:94:E8:FC:E6:6E:6E:E2:7C:51:75"
+      }
+    },
+    {
+      "ok": true,
+      "target": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "algo": "ed25519",
+      "nonce": "5a242ff54aa37f8451000609a4eb2b5c8d09d74a13b6f362cae990e020366d15",
+      "key": "236f5a6b91dd47dc3b7b36e43d4eb531a042ffb8f8fbf3a1555b78cef4fdda4c",
+      "matches_pin": true,
+      "tcb": "UpToDate",
+      "compose_hash": "e3902667a26282dd8b4015a901848c521b20243a155a457148f88acf48a45959",
+      "mrtd": "e107136c99ae1745ab299e9462927890b7b1c984d5ef53fa5830584ad4246db663fdf96563b913e9e2471906b26f7aae",
+      "compose_manager": {
+        "tcb": "UpToDate",
+        "model_file": "prod/deepseek-v4.1-flash-1017-vllm-dep4x2.yaml",
+        "file_sha256": "ddd3773b7fac6b85c9697b7b54085c6e8e23340d73d41fefa40e94daa9976fce",
+        "commit": "cdc7ce7d1ec28e93d28aef60b305eb9331261631"
+      },
+      "nvidia": {
+        "arch": "HOPPER",
+        "gpus": 8,
+        "overall": true,
+        "eat_nonce_ok": true,
+        "nvidia_chain": "C=US, O=NVIDIA Corporation, CN=NVIDIA Attestation Service CA 001 sha256=2D:F8:90:7C:F4:D6:C2:77:B8:55:D4:07:EC:17:8A:64:99:30:A8:E7:3F:72:94:E8:FC:E6:6E:6E:E2:7C:51:75"
+      }
+    }
+  ]
+}

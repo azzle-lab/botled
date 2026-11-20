@@ -1,0 +1,25 @@
+{
+  "name": "botled-runner-near",
+  "private": true,
+  "type": "module",
+  "description": "Self-run Botled v5/NEAR juror + sponsor relay. Sends nothing on a real chain unless BOTLED_SEND=1; e2e runs on local anvil with mocks.",
+  "scripts": {
+    "selftest": "node --experimental-strip-types selftest.ts",
+    "typecheck": "tsc --noEmit",
+    "e2e": "node --experimental-strip-types e2e.ts",
+    "loop": "node --experimental-strip-types loop.ts",
+    "verify-attestation": "node --experimental-strip-types tools/verify-attestation.ts",
+    "audit": "node --experimental-strip-types tools/audit.ts",
+    "testnet-ticket": "node --experimental-strip-types tools/testnet-ticket.ts",
+    "bridge-penalties": "node --experimental-strip-types tools/bridge-penalties.ts"
+  },
+  "dependencies": {
+    "@noble/curves": "^1.9.0",
+    "@noble/hashes": "^1.8.0",
+    "viem": "^2.21.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "typescript": "^5.9.3"
+  }
+}

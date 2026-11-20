@@ -1,0 +1,14 @@
+{
+  "name": "botled_ruling",
+  "strict": true,
+  "schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["outcome", "workerBps", "reason"],
+    "properties": {
+      "outcome": { "type": "string", "enum": ["POSTER_WINS", "WORKER_WINS", "SPLIT", "MUTUAL", "NONE"] },
+      "workerBps": { "type": "integer" },
+      "reason": { "type": "string" }
+    }
+  }
+}

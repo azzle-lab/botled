@@ -1,0 +1,7 @@
+{
+ "registry": "b0c3f8cbde21c8814baccfd84afce62f70ab33b57fe3717b01828ee41f06c625",
+ "wasm_sha256": "83d2684e98d8133a8b59737eccfb1a22877b3c2c9dfcf0368ee1761825ec6f74",
+ "deploy_tx": "Bz1zEUWQn6yEDoN7NXzsAzmz36Jocthqed8TPsqw5ZsB",
+ "usdc_storage_registry_tx": "8NXphARXvuPn25iDd3Lcmd75iFLyvPQFMxkLUsxDWbTS",
+ "usdc_storage_treasury_tx": "Wumz3neXobbBZoZne2gVxeLxXDvsi81SAR9yhwrjPfj"
+}

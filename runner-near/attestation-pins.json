@@ -1,0 +1,15 @@
+{
+  "note": "Signing keys Botled pins in BotledNearConfig (kind 1 = gateway, kind 2 = provider TEE). verify-attestation.ts checks the LIVE NEAR AI attestation still binds exactly these keys.",
+  "gateway": {
+    "ecdsa": "0xb98a789cdc4817275f5155593ba73ef2a957e779",
+    "ed25519": "40599fb284f43953bb356b09080fd803c960fc10285ad90eca462ca711ad4acb"
+  },
+  "models": {
+    "deepseek-ai/DeepSeek-V4.1-Flash-1017": {
+      "ecdsa": "0xfe0071895500a9755c18044948ab4f4e1a7f337e",
+      "ed25519": "236f5a6b91dd47dc3b7b36e43d4eb531a042ffb8f8fbf3a1555b78cef4fdda4c"
+    }
+  },
+  "nvidiaRootSha256": "2D:F8:90:7C:F4:D6:C2:77:B8:55:D4:07:EC:17:8A:64:99:30:A8:E7:3F:72:94:E8:FC:E6:6E:6E:E2:7C:51:75",
+  "nvidiaRootNote": "sha256 of the top x5c certificate in NVIDIA's NRAS JWKS chain, first seen 2026-11-20 (TOFU). Re-pin deliberately if NVIDIA rotates."
+}

@@ -1,0 +1,16 @@
+node_modules/
+out/
+cache/
+broadcast/
+runner/state/
+runner/node_modules/
+.env
+*.key
+*.pem
+secrets/
+runner-near/e2e/
+runner-near/node_modules/
+runner-near/.botled-runner.json
+near/target/
+runner-near/.testnet/
+tools/attest/target/

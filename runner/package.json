@@ -1,0 +1,14 @@
+{
+  "name": "botled-runner-reference",
+  "private": true,
+  "type": "module",
+  "description": "Botled runner node and cage operator CLI. Sends nothing unless BOTLED_SEND=1, and nothing to mainnet unless MAINNET_OK=1.",
+  "scripts": {
+    "node": "node --experimental-strip-types botled-node.ts",
+    "runner": "node --experimental-strip-types runner-cli.ts",
+    "cage": "node --experimental-strip-types cage-cli.ts",
+    "setup": "node --experimental-strip-types setup.ts",
+    "e2e": "node --experimental-strip-types e2e-fork.ts"
+  },
+  "dependencies": { "viem": "^2.21.0" }
+}

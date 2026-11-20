@@ -1,0 +1,36 @@
+{
+  "lane": "deepseek",
+  "model": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+  "maxTokens": 8000,
+  "chatId": "chatcmpl-b7505234-b660-4f09-860e-80d424c50940",
+  "usage": {
+    "prompt_tokens": 559,
+    "total_tokens": 1137,
+    "completion_tokens": 578,
+    "prompt_tokens_details": {
+      "cached_tokens": 0,
+      "created_cache_tokens": 512
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 506
+    }
+  },
+  "requestSha256": "f88f96f5058e92396722386df5deca3991056c483b15301c05ec2e48103dd640",
+  "responseSha256": "5135c795b194537cd93a96697347bfc7c5073881a73b3dd0fbe56d01482fee6f",
+  "signatures": {
+    "ecdsa": {
+      "text": "deepseek-ai/DeepSeek-V4.1-Flash-1017:f88f96f5058e92396722386df5deca3991056c483b15301c05ec2e48103dd640:5135c795b194537cd93a96697347bfc7c5073881a73b3dd0fbe56d01482fee6f",
+      "signature": "0x3fc0c55e84707facd1c75d898a4b4954185710a9ea5b95f4c25d5f664ce10386746f570e298e6c38fd345dda83215609ffa941a96890112d43d25e1adb7cb3711c",
+      "signing_address": "0xfe0071895500a9755c18044948ab4f4e1a7f337e",
+      "signing_algo": "ecdsa",
+      "signature_kind": "provider_tee"
+    },
+    "ed25519": {
+      "text": "deepseek-ai/DeepSeek-V4.1-Flash-1017:f88f96f5058e92396722386df5deca3991056c483b15301c05ec2e48103dd640:5135c795b194537cd93a96697347bfc7c5073881a73b3dd0fbe56d01482fee6f",
+      "signature": "35e3f4e100c5ddf0c20942b502fe80ec2aa24e1fd68c01580d96f4149a184ace7724f7cbf02f72e22bd33ca8bf43617e45639d0c2abb12a9b686bd4ef5180305",
+      "signing_address": "236f5a6b91dd47dc3b7b36e43d4eb531a042ffb8f8fbf3a1555b78cef4fdda4c",
+      "signing_algo": "ed25519",
+      "signature_kind": "provider_tee"
+    }
+  }
+}

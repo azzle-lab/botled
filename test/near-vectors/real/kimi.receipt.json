@@ -1,0 +1,31 @@
+{
+  "lane": "kimi",
+  "model": "moonshotai/kimi-k3",
+  "maxTokens": 6000,
+  "chatId": "feafac170f1546eb81bc1ba297154df3",
+  "usage": {
+    "prompt_tokens": 733,
+    "total_tokens": 1077,
+    "completion_tokens": 344,
+    "prompt_tokens_details": null,
+    "reasoning_tokens": 221
+  },
+  "requestSha256": "67e0b21aed2cee111052982e72e15bc95c66968d72b2d1096332c779eeb8715f",
+  "responseSha256": "6e5776b3e1251ae48461854420d56feee3af13c82d39368dae4332178b2efe64",
+  "signatures": {
+    "ecdsa": {
+      "text": "67e0b21aed2cee111052982e72e15bc95c66968d72b2d1096332c779eeb8715f:6e5776b3e1251ae48461854420d56feee3af13c82d39368dae4332178b2efe64",
+      "signature": "0xfe384548c09ff2c850dd62fef219b9e6db9d6b315e6e4eaf0a3beef69d9d5b49161e0fb74693c2179afcd11537b50c4762323992b3f0e28b553b22692b6a11b61b",
+      "signing_address": "0xb98a789cdc4817275f5155593ba73ef2a957e779",
+      "signing_algo": "ecdsa",
+      "signature_kind": "gateway"
+    },
+    "ed25519": {
+      "text": "67e0b21aed2cee111052982e72e15bc95c66968d72b2d1096332c779eeb8715f:6e5776b3e1251ae48461854420d56feee3af13c82d39368dae4332178b2efe64",
+      "signature": "1b7207472fe41990cd5b6a01de3ef760563d51bdf39418846c247a1daab004f838df3156632ab51462ed1592225a7ef1d6c04ad84e743e3604c12018bcba3a02",
+      "signing_address": "40599fb284f43953bb356b09080fd803c960fc10285ad90eca462ca711ad4acb",
+      "signing_algo": "ed25519",
+      "signature_kind": "gateway"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+[package]
+name = "botled-registry"
+description = "Botled NEAR runner registry: USDC signup/top-up, LLM budget, NEAR AI receipt billing, Chain Signatures enrollment tickets"
+version = "0.1.0"
+edition = "2021"
+# Public git repo (NEP-330 link). Planned; not pushed yet as of 2026-11-20.
+repository = "https://github.com/azzle-lab/botled"
+
+# NEP-330 reproducible build (`cargo near build reproducible-wasm`, needs Docker + a clean git checkout).
+# near/build-wasm.sh does the same pinned build without Docker and checks near/wasm.sha256.
+[package.metadata.near.reproducible_build]
+image = "sourcescan/cargo-near:0.23.0-rust-1.99.1"
+image_digest = "sha256:8013f039e8005627f10ae66b5519d1a6eeeed7d7aef4b5067d5e9a86c4302fcc"
+passed_env = []
+container_build_command = ["cargo", "near", "build", "non-reproducible-wasm", "--locked", "--no-abi"]
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[features]
+# `derivation` (on by default since 2026-11-20): signup requires base == the runner's v1.signer address (mpc_root)
+default = ["derivation"]
+derivation = ["botled-logic/derivation"]
+
+[dependencies]
+near-sdk = { version = "5.24.0", features = ["unstable"] }
+botled-logic = { path = "../botled-logic" }
+borsh = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[dev-dependencies]
+near-sdk = { version = "5.24.0", features = ["unit-testing", "unstable"] }
+k256 = { version = "0.13", features = ["ecdsa", "arithmetic"] }
+sha3 = "0.10"
+ed25519-dalek = "2"
+bs58 = "0.5"
+sha2 = "0.10"

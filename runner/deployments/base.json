@@ -1,0 +1,22 @@
+{
+  "chainId": 8453,
+  "azl": "0x931517E9502F9d52CDF6F5AC7fca7925e2A1BBA3",
+  "config": "0x6A5785cc5e79Dc4c800367b54eA525c5e31040D7",
+  "panelOwner": "0xF7E5A611154C8d30A03791409F2606C278597a04",
+  "evidence": "0xb2466cef02e7bfdaa85f141602a8759d3d96bf12",
+  "modules": {
+    "micro": { "arbitration": "0x905E561B44E76fdeAF5F41Bc2c46ebCE4E5E02fE", "vault": "0x54242151DDCe196314fba21FA630bF62D56a14B3", "minimumBondAZL": 1000 },
+    "standard": { "arbitration": "0x1003592A2eeF71b15A21457910007b38B0e2027A", "vault": "0xFeF0722d2f3ba0FEb59b3fd5dCAaF49e69BD5387", "minimumBondAZL": 10000 }
+  },
+  "v4": {
+    "pool": "0xD2dEF94F5470C0B4AFa0E651427B9a1b100DB8b2",
+    "factory": "0x8297A533bFAE66c1529ce75C425AC2F462DDe073",
+    "deployBlock": 59117354
+  },
+  "v5": {
+    "pool": null,
+    "factory": null,
+    "deployBlock": null,
+    "note": "not deployed yet; set V5_POOL / V5_FACTORY / V5_FROM_BLOCK or fill in after deployment"
+  }
+}
