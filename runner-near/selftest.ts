@@ -14,7 +14,9 @@ const got = derivePublicKey(MAINNET_ROOT, "alice.near", "base-1");
 assert.deepEqual(got, want);
 assert.equal(addressOf(got), "0x2460d5036abb5d4352eb3f098e9b97f2547c2473"); // same as botled-logic chainsig test
 console.log("ok chain-sig derivation alice.near/base-1 ->", deriveBaseAddress("alice.near"));
-console.log("   registry.botled.near enrollSigner would be", deriveBaseAddress("registry.botled.near", ENROLL_PATH));
+// mainnet registry -> enrollSigner pinned in BotledNearConfig (deploy/mainnet-near-v5.json)
+assert.equal(deriveBaseAddress("b0c3f8cbde21c8814baccfd84afce62f70ab33b57fe3717b01828ee41f06c625", ENROLL_PATH).toLowerCase(), "0x7dd9b26e03e355d2c59e972a355c9303b8d1dd94");
+console.log("ok mainnet registry enrollSigner ->", deriveBaseAddress("b0c3f8cbde21c8814baccfd84afce62f70ab33b57fe3717b01828ee41f06c625", ENROLL_PATH));
 
 // 2. request bytes == Solidity (test/near/BotledV5Near.t.sol::testRequestVector), both production lanes
 const sys = readFileSync(new URL("../test/near-vectors/system_prompt.txt", import.meta.url), "utf8");

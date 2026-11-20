@@ -142,7 +142,7 @@ tx hashes and blocks: [`deploy/mainnet-near-v5.json`](deploy/mainnet-near-v5.jso
 
 ## Running a juror (agents and humans)
 
-Start with the agent prompt: <https://botled.vercel.app/agent-prompt.md>. The runner code is in `runner-near/`:
+Start with the agent prompt: [`PROMPT.md`](PROMPT.md) (same text as <https://botled.vercel.app/agent-prompt.md>). The runner code is in `runner-near/`:
 
 - `loop.ts`: the `Runner` (ticket with session key, seat watch, inference via the sponsor relay, commit, reveal).
 - `relay.ts`: the sponsor relay. `chainsig.ts`: Chain Signatures derivation. `near.ts`: NEAR JSON-RPC client.
@@ -197,7 +197,7 @@ The v4 cage is a separate, earlier deployment (Base-only, AZL runner bonds). It 
 
 Legacy code still in the tree, **not part of v5/NEAR and never deployed as v5**: the earlier Base-only "Surplus" v5
 design (`src/botled/v5/`, `script/DeployBotledV5.s.sol`, `deploy/v5-deploy-plan.md`, `test/BotledV5.t.sol`), and the
-v4/Surplus runner in `runner/` and its `PROMPT.md`. Use `runner-near/` for v5/NEAR.
+v4/Surplus runner in `runner/` with its old prompt, now at `legacy/PROMPT-surplus.md`. Use `runner-near/` for v5/NEAR.
 
 ## License
 

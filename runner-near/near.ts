@@ -3,7 +3,7 @@
 // signed with @noble/curves. Implements the `Near` interface the loop and relay use (mock/near.ts is the test double).
 //
 //   const near = NearRpc.fromEnv();          // NEAR_RPC, NEAR_ACCOUNT_ID, NEAR_PRIVATE_KEY or ~/.near-credentials
-//   await near.view("registry.botled.near", "get_settings", {});
+//   await near.view("b0c3f8cbde21c8814baccfd84afce62f70ab33b57fe3717b01828ee41f06c625", "get_settings", {});
 //   await near.call("v1.signer", "sign", signArgs(digest, "base-1"), { deposit: 1n, gasTgas: 50 });
 //
 // Keys: the private key is read once into memory and never logged. Use a FunctionCall access key restricted to the

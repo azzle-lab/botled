@@ -6,7 +6,7 @@
   "owner": "b0c3f8cbde21c8814baccfd84afce62f70ab33b57fe3717b01828ee41f06c625",
   "wasm_sha256": "ae640bb345f57a4caed813c7de316a0c7d108efc5a2ee43f3457a95de9685067",
   "code_hash_b58": "CjkRP25Vja4kBsAHo5pawjeTCZytazCP4txPcYjEEdux",
-  "nep330_link": "https://github.com/azzle-lab/botled (planned public repo, NOT pushed yet)",
+  "nep330_link": "https://github.com/azzle-lab/botled (public, pushed 2026-11-20)",
   "deploy_and_init_tx": "Bz1zEUWQn6yEDoN7NXzsAzmz36Jocthqed8TPsqw5ZsB",
   "usdc_storage_registry_tx": "8NXphARXvuPn25iDd3Lcmd75iFLyvPQFMxkLUsxDWbTS",
   "usdc_storage_treasury_tx": "Wumz3neXobbBZoZne2gVxeLxXDvsi81SAR9yhwrjPfj",
@@ -20,7 +20,6 @@
    "profit_to": "ea850d6932e9e6cdc1b535e9ebfff8a31e88ef9b1ae97c3cd24767b217dab230",
    "dev_to": "ea850d6932e9e6cdc1b535e9ebfff8a31e88ef9b1ae97c3cd24767b217dab230",
    "penalty_to": "ea850d6932e9e6cdc1b535e9ebfff8a31e88ef9b1ae97c3cd24767b217dab230",
-   "key": "/home/box/secrets/botled-near-treasury.json",
    "why": "not the registry itself: NEP-141 ft_transfer to self fails, owed balances would be uncollectable",
    "decision": "Daniel 2026-11-20: profit_to/dev_to -> azzle.near (pending id 0), penalty_to stays treasury"
   },
@@ -218,5 +217,23 @@
   ],
   "script_phase2": "script/DeployBotledV5NearPhase2.s.sol"
  },
- "attestation": "deploy/attestation-mainnet-20261120.json (4/4 ok, pins match)"
+ "attestation": "deploy/attestation-mainnet-20261120.json (4/4 ok, pins match)",
+ "public_repo": {
+  "target": "https://github.com/azzle-lab/botled",
+  "status": "public on github.com/azzle-lab/botled (branch main)",
+  "secret_scan": "clean (14 known secret values: 0 hits; only public test keys present)"
+ },
+ "site": {
+  "vercel_team": "team_632GSWmCeqEpKhmr6SIaglpm",
+  "project": "botled",
+  "project_id": "prj_RBH493TRui2rjTeD01u5axI2kjBC",
+  "deployment_id": "dpl_3VxNqrpNPdBYNqEmyZFTmcw5V17H",
+  "url": "https://botled.vercel.app",
+  "aliases": [
+   "botled.vercel.app",
+   "botled-dabus123s-projects.vercel.app"
+  ],
+  "custom_domains": [],
+  "status_banner": "not live yet / do not sign up with real USDC (DEPLOYED=false)"
+ }
 }

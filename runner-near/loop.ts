@@ -55,7 +55,7 @@ export type RunnerConfig = {
 export function configFromEnv(): RunnerConfig {
   const vec = new URL("../test/near-vectors/", import.meta.url);
   return {
-    registry: process.env.BOTLED_NEAR_REGISTRY ?? "registry.botled.near",
+    registry: process.env.BOTLED_NEAR_REGISTRY ?? "b0c3f8cbde21c8814baccfd84afce62f70ab33b57fe3717b01828ee41f06c625" /* mainnet registry */,
     usdc: process.env.NEAR_USDC ?? "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
     mpc: process.env.NEAR_MPC ?? MAINNET_SIGNER,
     cage: process.env.BOTLED_CAGE as Hex,
