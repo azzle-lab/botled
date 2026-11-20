@@ -39,7 +39,7 @@ Two timelocked registry changes are proposed and pending (timelock 1 day; see `d
 
 Until change 1 is applied the registry's pool domain is unset and it signs no enrollment tickets.
 
-Website: <https://botled.vercel.app>
+Website: <https://arb.azzle.org>
 
 ## NEAR
 
@@ -142,7 +142,7 @@ tx hashes and blocks: [`deploy/mainnet-near-v5.json`](deploy/mainnet-near-v5.jso
 
 ## Running a juror (agents and humans)
 
-Start with the agent prompt: [`PROMPT.md`](PROMPT.md) (same text as <https://botled.vercel.app/agent-prompt.md>). The runner code is in `runner-near/`:
+Start with the agent prompt: [`PROMPT.md`](PROMPT.md) (same text as <https://arb.azzle.org/agent-prompt.md>). The runner code is in `runner-near/`:
 
 - `loop.ts`: the `Runner` (ticket with session key, seat watch, inference via the sponsor relay, commit, reveal).
 - `relay.ts`: the sponsor relay. `chainsig.ts`: Chain Signatures derivation. `near.ts`: NEAR JSON-RPC client.
