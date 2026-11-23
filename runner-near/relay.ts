@@ -40,7 +40,23 @@ export type RelayConfig = {
   pool: Hex;
   lanes?: LaneCfg[];
   storePath?: string; // persisted seat -> receipt map (survives restarts: still one run per seat)
+  store?: SeatStore; // shared store for multi-instance hosting (serverless): replaces storePath + in-memory dedupe
 };
+
+/** Shared seat store. claim() must be atomic across instances (e.g. Redis SET NX): it is what keeps a seat at ONE
+ *  NEAR AI run when several relay instances receive the same seat concurrently (two co-signed runs = fraud proof). */
+export interface SeatStore {
+  get(key: string): Promise<SponsoredReceipt | undefined>;
+  claim(key: string, ttlSec: number): Promise<boolean>;
+  put(key: string, rc: SponsoredReceipt): Promise<void>;
+  release(key: string): Promise<void>;
+  list(): Promise<[string, SponsoredReceipt][]>;
+}
+
+export class SeatBusy extends Error {
+  status: number;
+  constructor() { super("seat is being served right now; retry in a few seconds (same request returns the same receipt)"); this.status = 409; }
+}
 
 const JUROR = /botled juror (0x[0-9a-f]{40}) round (\d+) case (0x[0-9a-f]{64})\\n/g;
 
@@ -75,6 +91,24 @@ export class SponsorRelay {
   async run(arbitration: Hex, taskId: bigint, request: Uint8Array): Promise<SponsoredReceipt> {
     const s = parseSeat(request);
     const key = `${s.runner}:${s.round}:${s.inputHash}`;
+    const st = this.cfg.store;
+    if (st) {
+      const done = await st.get(key);
+      if (done) {
+        if (done.request !== toHex(request)) throw new Error("seat already served with a different request (no resampling)");
+        return done;
+      }
+      if (!(await st.claim(key, 600))) throw new SeatBusy();
+      let rc: SponsoredReceipt;
+      try {
+        rc = await this.serve(arbitration, taskId, request, s);
+      } catch (e) {
+        await st.release(key); // nothing was co-signed: the seat may be tried again
+        throw e;
+      }
+      await st.put(key, rc); // persisted BEFORE the receipt leaves the relay; the claim is never released after signing
+      return rc;
+    }
     const done = this.seats.get(key);
     if (done) {
       if (done.request !== toHex(request)) throw new Error("seat already served with a different request (no resampling)");

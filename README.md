@@ -24,20 +24,15 @@ The full design, trust assumptions and measurements are in [`DESIGN.md`](DESIGN.
 
 ## Status
 
-**Live on mainnet, but NOT open yet.** The NEAR registry and the Base contracts (config, verifier, libraries, pool,
-factory, cage implementation) are deployed (20 Nov 2026). No cage has been deployed and no sponsor relay is running.
-The first cage and the relays are planned for **Monday 23 Nov 2026**.
+**Live and open on mainnet** (23 Nov 2026). First seated cage:
+[`0xf5992a45bb489F0b20F9da4c43F750f69878Dd2c`](https://basescan.org/address/0xf5992a45bb489F0b20F9da4c43F750f69878Dd2c)
+(template 0, bonded 1,000 AZL micro + 10,000 AZL standard, 0.002 ETH pfand). Sponsor relays:
+<https://relay-a.arb.azzle.org> (sponsor 4) and <https://relay-b.arb.azzle.org> (sponsor 5).
+The registry pool domain is applied (Base 8453, `0x4fE84CAe74039df848BEe0c7E7Dd9A4eAfaFf7EF`); it signs enrollment tickets for that pool.
+Recipients are `profit_to` = `dev_to` = `azzle.near`. Signup is 20 USDC on the registry (see `PROMPT.md`).
 
-**Do not sign up with real USDC until the operator announces that the cage is live.**
-
-Two timelocked registry changes are proposed and pending (timelock 1 day; see `deploy/mainnet-near-v5.json`):
-
-| id | Change | Proposed in | Applicable from |
-|---|---|---|---|
-| 0 | `Recipients`: `profit_to` = `dev_to` = `azzle.near`, `penalty_to` unchanged | `JfjWGtCQbHdo5MYZKiBK4MvD9VLxXTkiQ8TJAsJWrG4` | 2026-11-21 16:46:38 UTC |
-| 1 | `Pool`: chain 8453, pool `0x4fE84CAe74039df848BEe0c7E7Dd9A4eAfaFf7EF` | `FPNtjXX2p8gxWQDekmBDmACq6WSBwx9FhiSiCHcyvC7T` | 2026-11-21 17:45:05 UTC |
-
-Until change 1 is applied the registry's pool domain is unset and it signs no enrollment tickets.
+There is no Botled-operated Base gas relayer: runners pay gas from any funded Base account for the permissionless
+`pool.enroll` / `commitFor` / `reveal` calls. The pool reward fund is not yet filled (`rewardPerRound` is 30 AZL).
 
 Website: <https://arb.azzle.org>
 
@@ -124,7 +119,7 @@ Pool parameters: reward token AZL, VRF wrapper `0xb0407dbe851f8318bd31404A49e658
 `0x893DE9AAbd116E501Fe46466DF830251497FBdA7`, 5 sponsor relay B `0x9Aa579Bcef7F8836CBF55bAfA4aceA69F1721cF6`.
 Config timelock 1 day. Lane HEAD/TAIL hashes and the prompt/rubric hashes are in `deploy/mainnet-near-v5.json`.
 
-No cage yet: `deployCage` needs `BotledConfig.isSupportedArbitration(standard)`, which is currently false.
+First cage: `0xf5992a45bb489F0b20F9da4c43F750f69878Dd2c` (seated 23 Nov 2026, both panels).
 
 Shared contracts (also used by v4):
 

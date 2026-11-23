@@ -43,14 +43,16 @@ class W {
 
 export type FunctionCall = { methodName: string; args: Uint8Array; gas: bigint; deposit: bigint };
 export type DeployContract = { code: Uint8Array };
-export type Action = FunctionCall | DeployContract;
+export type Transfer = { transfer: bigint };
+export type Action = FunctionCall | DeployContract | Transfer;
 export type Tx = { signerId: string; publicKey: Uint8Array; nonce: bigint; receiverId: string; blockHash: Uint8Array; actions: Action[] };
 
-/** Borsh(Transaction V0): Action enum 1 = DeployContract, 2 = FunctionCall; PublicKey/Signature key type 0 = ED25519. */
+/** Borsh(Transaction V0): Action enum 1 = DeployContract, 2 = FunctionCall, 3 = Transfer; PublicKey/Signature key type 0 = ED25519. */
 export function encodeTx(t: Tx): Uint8Array {
   const w = new W().str(t.signerId).u8(0).fixed(t.publicKey).u64(t.nonce).str(t.receiverId).fixed(t.blockHash).u32(t.actions.length);
   for (const a of t.actions) {
     if ("code" in a) w.u8(1).bytes(a.code);
+    else if ("transfer" in a) w.u8(3).u128(a.transfer);
     else w.u8(2).str(a.methodName).bytes(a.args).u64(a.gas).u128(a.deposit);
   }
   return w.out();
@@ -165,7 +167,7 @@ export class NearRpc implements Near {
     const ak = await this.rpcCall("query", { request_type: "view_access_key", finality: "final", account_id: this.accountId, public_key: pk });
     if (ak.permission !== "FullAccess") {
       const p = ak.permission?.FunctionCall;
-      const bad = actions.some((a) => "code" in a || a.deposit > 0n || (p.method_names.length && !p.method_names.includes(a.methodName)));
+      const bad = actions.some((a) => "code" in a || "transfer" in a || a.deposit > 0n || (p.method_names.length && !p.method_names.includes(a.methodName)));
       if (!p || p.receiver_id !== receiverId || bad) throw new Error(`access key cannot send this transaction to ${receiverId}`);
     }
     const tx: Tx = {

@@ -23,3 +23,41 @@
 - 2026-11-20 18:45 NEAR propose Change::Pool{8453, 0x4fE8…f7EF} = pending id 1, tx FPNtjXX2p8gxWQDekmBDmACq6WSBwx9FhiSiCHcyvC7T, eta 1795283105 = 2026-11-21 18:45:05 Berlin. NOT applied. Apply: cd runner-near && node --experimental-strip-types tools/propose-pool-mainnet.ts --apply 1. Deployer nonce now 28; Sunday proposeArbitration just uses the next nonce (no anchor depends on it anymore).
 - 2026-11-20 19:17 DERIVATION: registry default feature derivation + view chain_signature_base; wasm 357,622 B sha256 ae640bb3…5067 (pinned, clean rebuild identical). Tests: registry 20 (5 new derivation incl. real mainnet vectors azzle.near/base-1 0xae52… and enrollSigner 0x7dd9…), sandbox upgrade test (v1 83d2 -> new: pending/settings/runners survive; wrong base refused; signup 6.69 Tgas). Upgrading mainnet.
 - 2026-11-20 19:18 MAINNET registry upgraded: tx Fp1qX1hEAoiP6QwMf4t5oKwYosCsnKE3XhymFHXytcsU, code_hash CjkRP25V… == sha256 ae640bb3…; pending 0/1, settings, owner unchanged; chain_signature_base(azzle.near)=0xae52… OK. NEAR 4.9900 total, ~1.40 free.
+- 2026-11-20 19:22 REPO: gh not logged in and Cursor GitHub not connected -> push BLOCKED. Prepared secret-scanned clean tree /workspace/botled-public (158 files, local git main @e65e51e, no remote). Scan: 14 known secret values 0 hits; pattern hits only public test keys (anvil dev keys, near-api-js test seed, 1Click signature). github.com/azzle-lab is a user account; azzle-lab/botled returns 404 (does not exist). SITE: Vercel project botled (prj_RBH493TRui2rjTeD01u5axI2kjBC) deployment dpl_3VxNqrpNPdBYNqEmyZFTmcw5V17H building.
+- 2026-11-20 19:24 SITE READY: https://arb.azzle.org (project botled prj_RBH493TRui2rjTeD01u5axI2kjBC, dpl_3VxNqrpNPdBYNqEmyZFTmcw5V17H). Only *.vercel.app aliases, no azzle.org domains, existing azzle project untouched. 'Not live yet / don't sign up with real USDC' text confirmed live; /agent-prompt.md 200. Hash-specific/team URLs are behind Vercel Authentication (default), production alias public.
+- 2026-11-20 19:50 Leftovers fixed: runner-near default registry = mainnet account (loop.ts, near.ts comment; selftest asserts mainnet enrollSigner 0x7dd9…Dd94); PROMPT.md = current v5/NEAR agent prompt (old Surplus prompt -> legacy/PROMPT-surplus.md); agent prompt updated (deployed-not-open status, cage impl, repo clone, chain_signature_base check); nep330_link note fixed. tsc + selftest OK. Public repo commit 1b8c5d0 pushed (key path stripped from public deploy record). Site redeployed dpl_FLithXxYuYUb3FickySTxgDLQT3K -> arb.azzle.org.
+
+## 2026-11-20 — site live mode
+- arb.azzle.org no longer runs on mock data. It reads Base (factory, pool, NearConfig) and the NEAR registry live; empty data shows empty states and RPC failures show "unavailable".
+- Added NEAR Connect wallet login, a signup card (disabled until Monday), 1Click intents quotes (dry, no key), /llms.txt, a For Agents section, and the AZZLE edge uplift.
+- Deploy dpl_Gu87dV2tCjd4pfqtFcknJLxfELJE. PROMPT.md synced (public repo 4f67c24).
+- 20:32 Berlin: deploy dpl_BdExsxkNrcUtDSW8dCuKLnruhoqK: NEAR↔Base lockup alignment, light-mode hero cells, bracket clearance on disabled buttons.
+- 20:38 Berlin: deploy dpl_Djgiak3zaf9i1zKS92sM2UeGzZgn: botled logo in the header, mascot in the hero plus favicon/apple-touch/OG, blue Base logo in light mode. arb.azzle.org added to the botled project; waiting on the DNS CNAME.
+- 20:45 Berlin: deploy dpl_5yzRKVpA9UfjfNRtycqxE2VTQgH8: "botled by AZZLE" lockup in the header and OG (public/brand/). arb.azzle.org now resolves and serves over HTTPS.
+- 20:57 Berlin: deploy dpl_7H8TkM3AjtgxkL8tZJAaFSMGqRzn: site moved to https://arb.azzle.org (botled.vercel.app 308-redirects with the path kept). New "botled | by AZZLE" header with a vector AZZLE wordmark (public/brand/azzle-wordmark*.svg) and a new OG image. Public repo 02b72dc.
+- 21:10 Berlin: deploy dpl_3ycEAeWTVE36eUAiEE9G8oyoF95w: header lockup alignment fix ("BY" on the baseline and matched to the AZZLE cap height; lockup 1px up to centre against the nav).
+- 21:22 Berlin: deploy dpl_JJsC3knRtZ8PgJ2rZ9tGxDo2UXYD: header lockup aligned centre to centre (flex centre, text-box trim on "BY"), all centres within 0.5px of the nav pill centre.
+
+## 2026-11-21 — registry apply
+- 2026-11-21 18:53 Europe/Berlin: beide Timelock-Proposals angewendet (permissionless apply). id 0 Change::Recipients profit_to=dev_to=azzle.near, penalty_to=treasury ea850d69…b230, tx 3xSAd4enXiDregK4wihLvDum6FHhbxsVsZGpeFZAjuMz. id 1 Change::Pool chain_id 8453 pool 0x4fE84CAe74039df848BEe0c7E7Dd9A4eAfaFf7EF, tx F9Vj9AVXPeRPb2tAZKfjjCb1JwRu5QnJhXhbgahhqCfZ. Readback: get_pending=[null,null]; settings match; beide Txs FINAL/SuccessValue.
+
+## 2026-11-22 — v5 Schritt 1 (nachgeholt, 17:44 Europe/Berlin)
+- Daniel hat um 17:41 Europe/Berlin explizit freigegeben, die zwei BotledConfig-Proposals sofort zu senden, ohne auf die Finalisierung von Task 14 zu warten (Task 14 war zu dem Zeitpunkt noch JURY, Round 2).
+- proposeArbitration(standard module 0x1003592A2eeF71b15A21457910007b38B0e2027A) an BotledConfig 0x6A5785cc5e79Dc4c800367b54eA525c5e31040D7: tx 0xcfa36ad589bf981e8c966a2ee0f14390efb5d0aa367bd3af053e5b85616c2e01, Block 60877396, 2026-11-22 17:44:14 Europe/Berlin. arbitrationActiveAt=1795452254 = **2026-11-23 17:44:14 Europe/Berlin**. isSupportedArbitration erst danach true.
+- proposeParams mit getParams(0), nur rewardPerRound=30e18 (alle anderen Params unverändert): tx 0x5f59a5295109803910ae5a8dc21c5a49ce3319a751b0d6d75a196550d7b0a68c, Block 60877401, 2026-11-22 17:44:15 Europe/Berlin. pendingParamsEta=1795452255 = **2026-11-23 17:44:15 Europe/Berlin**. activateParams noch nicht aufgerufen.
+- Readback bestätigt. Einträge in deploy/mainnet-near-v5.json (v5Schritt1) und /workspace/llm-arbitrator/deploy/base-mainnet.json (.v5).
+- Montagsroutine (Aktivierung + erster Käfig) darf nicht um 08:00 laufen: beide Timelocks sind erst Mo 23.11. 17:44:14 / 17:44:15 Europe/Berlin abgelaufen.
+
+## 2026-11-23 — v5 Base live (22:07 Europe/Berlin)
+- Params id 1 aktiv (rewardPerRound 30 AZL). Standard-Modul supported.
+- Erster Käfig 0xf5992a45bb489F0b20F9da4c43F750f69878Dd2c (Operator Deployer, template 0), seat tx 0x57096cd71eb2a28918ece6325301000a80f5b6edbbc2a9ac7d961ae2a6d0c201: 1.000 AZL micro + 10.000 AZL standard, 0,002 ETH Pfand, isSeated=true.
+- 0,001 ETH VRF-Float an Pool 0x4fE8…F7EF.
+- Offen: Relays A/B (kein Produktions-Launcher für relay.ts, NEAR-Konten nicht gefundet).
+
+## 2026-11-23 22:20 Relays auf Vercel
+- relay.ts: optional SeatStore (atomarer Claim, persistiert vor Rueckgabe) fuer Multi-Instanz-Hosting; relay-redis.ts (Upstash REST); vercel/handler.ts (Host relay-a/relay-b -> Sponsor 4/5).
+- Vercel-Projekt botled-relay deployed (iad1, maxDuration 300); Domains relay-a/relay-b.arb.azzle.org angehaengt, DNS bei GoDaddy offen.
+- near.ts: Transfer-Action; tools/fund-relays-mainnet.ts: je 0,3 NEAR an Relay-Implicit-Accounts (beide 0,3 NEAR, Registry 4,375).
+- Offen: NEAR_AI_API_KEY in Vercel (Daniel), CNAMEs, Redeploy, Live-Check, dann PROMPT.md SPONSOR_URL.
+- 22:26 Relays LIVE: relay-a/relay-b.arb.azzle.org /health 200 (Sponsor 4/5, Kaefig 0xf5992a45). PROMPT.md, Site-Agent-Prompts und botled-site config.ts mit Kaefig + Relay-URLs gefuellt (nicht deployed; Status-Zeile 'NOT open yet' bleibt bis Freigabe).
+- 22:55 GEOEFFNET: Site arb.azzle.org live and open (dpl_9PeZ3Gduaxbd3xHKApfexkjcYvUo, Projekt botled), Signup an. Derivation war schon on-chain aktiv (chain_signature_base azzle.near = 0xae52…), keine Tx noetig. Gas: Runner zahlen selbst (kein Relayer noetig). Bridge-Execution weiter nur Quotes. Repo-Push offen.

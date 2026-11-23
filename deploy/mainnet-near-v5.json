@@ -1,239 +1,330 @@
 {
- "status": "phase 1 + 2 deployed 2026-11-20 (Europe/Berlin): registry, config, verifier, libs, pool, factory. No cage yet.",
- "near": {
-  "network": "mainnet",
-  "registry": "b0c3f8cbde21c8814baccfd84afce62f70ab33b57fe3717b01828ee41f06c625",
-  "owner": "b0c3f8cbde21c8814baccfd84afce62f70ab33b57fe3717b01828ee41f06c625",
-  "wasm_sha256": "ae640bb345f57a4caed813c7de316a0c7d108efc5a2ee43f3457a95de9685067",
-  "code_hash_b58": "CjkRP25Vja4kBsAHo5pawjeTCZytazCP4txPcYjEEdux",
-  "nep330_link": "https://github.com/azzle-lab/botled (public, pushed 2026-11-20)",
-  "deploy_and_init_tx": "Bz1zEUWQn6yEDoN7NXzsAzmz36Jocthqed8TPsqw5ZsB",
-  "usdc_storage_registry_tx": "8NXphARXvuPn25iDd3Lcmd75iFLyvPQFMxkLUsxDWbTS",
-  "usdc_storage_treasury_tx": "Wumz3neXobbBZoZne2gVxeLxXDvsi81SAR9yhwrjPfj",
-  "init_args_file": "deploy/near-registry-init-args.json",
-  "timelock_secs": 86400,
-  "mpc": "v1.signer",
-  "mpc_root_hex": "903a9a9933ed92bdda3fcf30ac999060a5a0fa51c2b6c74838d3029a5aadefe038f7e4a91714f42bb5a2459a0d294be0cd047b4a999d6fd912702470f843271d",
-  "mpc_root_note": "enforced since upgrade Fp1qX1hE\u2026 (feature derivation)",
-  "usdc": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
-  "recipients_provisional": {
-   "profit_to": "ea850d6932e9e6cdc1b535e9ebfff8a31e88ef9b1ae97c3cd24767b217dab230",
-   "dev_to": "ea850d6932e9e6cdc1b535e9ebfff8a31e88ef9b1ae97c3cd24767b217dab230",
-   "penalty_to": "ea850d6932e9e6cdc1b535e9ebfff8a31e88ef9b1ae97c3cd24767b217dab230",
-   "why": "not the registry itself: NEP-141 ft_transfer to self fails, owed balances would be uncollectable",
-   "decision": "Daniel 2026-11-20: profit_to/dev_to -> azzle.near (pending id 0), penalty_to stays treasury"
-  },
-  "sponsors": {
-   "relayA": "2a193115b8be6016e1b4f04286b2776d6a0d2ab69cc86821051a73e7011f5a91",
-   "relayB": "4a9aec079963e6c20c307e4af90b41bd02b78868a146434d8d8930e2931c4d60"
-  },
-  "signers": [
-   "0 gateway ecdsa 0xb98a\u2026e779",
-   "1 gateway ed25519 40599f\u20264acb",
-   "2 DeepSeek TEE ecdsa 0xfe00\u2026337e",
-   "3 DeepSeek TEE ed25519 236f5a\u2026da4c"
-  ],
-  "pool_domain": {
-   "chain_id": 8453,
-   "pool": "0x0000000000000000000000000000000000000000",
-   "pending": "proposal id 1 -> 0x4fE84CAe74039df848BEe0c7E7Dd9A4eAfaFf7EF"
-  },
-  "enroll_path": "botled-enroll-v1",
-  "usdc_storage_azzle_near_tx": "CtHgsES3a57NAYWS6wJus5GMQJGFDshfdAKzaFVcfRhg",
-  "pending_changes": [
-   {
-    "id": 0,
-    "change": {
-     "Recipients": {
+  "status": "phase 1 + 2 deployed 2026-11-20 (Europe/Berlin): registry, config, verifier, libs, pool, factory. No cage yet.",
+  "near": {
+    "network": "mainnet",
+    "registry": "b0c3f8cbde21c8814baccfd84afce62f70ab33b57fe3717b01828ee41f06c625",
+    "owner": "b0c3f8cbde21c8814baccfd84afce62f70ab33b57fe3717b01828ee41f06c625",
+    "wasm_sha256": "ae640bb345f57a4caed813c7de316a0c7d108efc5a2ee43f3457a95de9685067",
+    "code_hash_b58": "CjkRP25Vja4kBsAHo5pawjeTCZytazCP4txPcYjEEdux",
+    "nep330_link": "https://github.com/azzle-lab/botled (public, pushed 2026-11-20)",
+    "deploy_and_init_tx": "Bz1zEUWQn6yEDoN7NXzsAzmz36Jocthqed8TPsqw5ZsB",
+    "usdc_storage_registry_tx": "8NXphARXvuPn25iDd3Lcmd75iFLyvPQFMxkLUsxDWbTS",
+    "usdc_storage_treasury_tx": "Wumz3neXobbBZoZne2gVxeLxXDvsi81SAR9yhwrjPfj",
+    "init_args_file": "deploy/near-registry-init-args.json",
+    "timelock_secs": 86400,
+    "mpc": "v1.signer",
+    "mpc_root_hex": "903a9a9933ed92bdda3fcf30ac999060a5a0fa51c2b6c74838d3029a5aadefe038f7e4a91714f42bb5a2459a0d294be0cd047b4a999d6fd912702470f843271d",
+    "mpc_root_note": "enforced since upgrade Fp1qX1hE\u2026 (feature derivation)",
+    "usdc": "17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+    "recipients_provisional": {
       "profit_to": "azzle.near",
       "dev_to": "azzle.near",
-      "penalty_to": "ea850d6932e9e6cdc1b535e9ebfff8a31e88ef9b1ae97c3cd24767b217dab230"
-     }
+      "penalty_to": "ea850d6932e9e6cdc1b535e9ebfff8a31e88ef9b1ae97c3cd24767b217dab230",
+      "key": "/home/box/secrets/botled-near-treasury.json",
+      "why": "not the registry itself: NEP-141 ft_transfer to self fails, owed balances would be uncollectable",
+      "decision": "Daniel 2026-11-20: profit_to/dev_to -> azzle.near, penalty_to stays treasury; applied 2026-11-21",
+      "applied": true,
+      "apply_tx": "3xSAd4enXiDregK4wihLvDum6FHhbxsVsZGpeFZAjuMz",
+      "applied_at": "2026-11-21 18:53 Europe/Berlin"
     },
-    "propose_tx": "JfjWGtCQbHdo5MYZKiBK4MvD9VLxXTkiQ8TJAsJWrG4",
-    "eta_unix": 1795279598,
-    "applicable_at": "2026-11-21 17:46:38 Europe/Berlin (16:46:38 UTC)",
-    "applied": false,
-    "apply_cmd": "cd runner-near && node --experimental-strip-types tools/propose-recipients-mainnet.ts --apply 0"
-   },
-   {
-    "id": 1,
-    "change": {
-     "Pool": {
+    "sponsors": {
+      "relayA": "2a193115b8be6016e1b4f04286b2776d6a0d2ab69cc86821051a73e7011f5a91",
+      "relayB": "4a9aec079963e6c20c307e4af90b41bd02b78868a146434d8d8930e2931c4d60"
+    },
+    "signers": [
+      "0 gateway ecdsa 0xb98a\u2026e779",
+      "1 gateway ed25519 40599f\u20264acb",
+      "2 DeepSeek TEE ecdsa 0xfe00\u2026337e",
+      "3 DeepSeek TEE ed25519 236f5a\u2026da4c"
+    ],
+    "pool_domain": {
       "chain_id": 8453,
-      "pool": "0x4fE84CAe74039df848BEe0c7E7Dd9A4eAfaFf7EF"
-     }
+      "pool": "0x4fE84CAe74039df848BEe0c7E7Dd9A4eAfaFf7EF",
+      "applied": true,
+      "apply_tx": "F9Vj9AVXPeRPb2tAZKfjjCb1JwRu5QnJhXhbgahhqCfZ",
+      "applied_at": "2026-11-21 18:53 Europe/Berlin"
     },
-    "propose_tx": "FPNtjXX2p8gxWQDekmBDmACq6WSBwx9FhiSiCHcyvC7T",
-    "eta_unix": 1795283105,
-    "applicable_at": "2026-11-21 18:45:05 Europe/Berlin (17:45:05 UTC)",
-    "applied": false,
-    "apply_cmd": "cd runner-near && node --experimental-strip-types tools/propose-pool-mainnet.ts --apply 1"
-   }
-  ],
-  "code_upgrades": [
-   {
-    "date": "2026-11-20 Europe/Berlin",
-    "tx": "Fp1qX1hEAoiP6QwMf4t5oKwYosCsnKE3XhymFHXytcsU",
-    "from_sha256": "83d2684e98d8133a8b59737eccfb1a22877b3c2c9dfcf0368ee1761825ec6f74",
-    "to_sha256": "ae640bb345f57a4caed813c7de316a0c7d108efc5a2ee43f3457a95de9685067",
-    "code_hash_b58": "CjkRP25Vja4kBsAHo5pawjeTCZytazCP4txPcYjEEdux",
-    "what": "feature derivation on: signup requires base == v1.signer address (mpc_root, path base-1); new view chain_signature_base(account). Plain DeployContract, no init; state layout unchanged; pending ids 0/1 + settings verified unchanged."
-   }
-  ]
- },
- "base": {
-  "chainId": 8453,
-  "deployer": "0x3D5eb1F648F495fAEFaeBa0dE74A5c52b6602F5D",
-  "nearConfigOwner": "0x3D5eb1F648F495fAEFaeBa0dE74A5c52b6602F5D",
-  "timelock": 86400,
-  "enrollSigner": "0x7dd9b26E03E355D2C59e972A355C9303B8d1Dd94",
-  "signerIds": {
-   "0": "gateway ecdsa",
-   "1": "gateway ed25519",
-   "2": "DeepSeek TEE ecdsa",
-   "3": "DeepSeek TEE ed25519",
-   "4": "sponsor relay A 0x893DE9AAbd116E501Fe46466DF830251497FBdA7",
-   "5": "sponsor relay B 0x9Aa579Bcef7F8836CBF55bAfA4aceA69F1721cF6"
+    "enroll_path": "botled-enroll-v1",
+    "usdc_storage_azzle_near_tx": "CtHgsES3a57NAYWS6wJus5GMQJGFDshfdAKzaFVcfRhg",
+    "pending_changes": [
+      {
+        "id": 0,
+        "change": {
+          "Recipients": {
+            "profit_to": "azzle.near",
+            "dev_to": "azzle.near",
+            "penalty_to": "ea850d6932e9e6cdc1b535e9ebfff8a31e88ef9b1ae97c3cd24767b217dab230"
+          }
+        },
+        "propose_tx": "JfjWGtCQbHdo5MYZKiBK4MvD9VLxXTkiQ8TJAsJWrG4",
+        "eta_unix": 1795279598,
+        "applicable_at": "2026-11-21 17:46:38 Europe/Berlin (16:46:38 UTC)",
+        "applied": true,
+        "apply_cmd": "cd runner-near && node --experimental-strip-types tools/propose-recipients-mainnet.ts --apply 0",
+        "apply_tx": "3xSAd4enXiDregK4wihLvDum6FHhbxsVsZGpeFZAjuMz",
+        "applied_at": "2026-11-21 18:53 Europe/Berlin"
+      },
+      {
+        "id": 1,
+        "change": {
+          "Pool": {
+            "chain_id": 8453,
+            "pool": "0x4fE84CAe74039df848BEe0c7E7Dd9A4eAfaFf7EF"
+          }
+        },
+        "propose_tx": "FPNtjXX2p8gxWQDekmBDmACq6WSBwx9FhiSiCHcyvC7T",
+        "eta_unix": 1795283105,
+        "applicable_at": "2026-11-21 18:45:05 Europe/Berlin (17:45:05 UTC)",
+        "applied": true,
+        "apply_cmd": "cd runner-near && node --experimental-strip-types tools/propose-pool-mainnet.ts --apply 1",
+        "apply_tx": "F9Vj9AVXPeRPb2tAZKfjjCb1JwRu5QnJhXhbgahhqCfZ",
+        "applied_at": "2026-11-21 18:53 Europe/Berlin"
+      }
+    ],
+    "code_upgrades": [
+      {
+        "date": "2026-11-20 Europe/Berlin",
+        "tx": "Fp1qX1hEAoiP6QwMf4t5oKwYosCsnKE3XhymFHXytcsU",
+        "from_sha256": "83d2684e98d8133a8b59737eccfb1a22877b3c2c9dfcf0368ee1761825ec6f74",
+        "to_sha256": "ae640bb345f57a4caed813c7de316a0c7d108efc5a2ee43f3457a95de9685067",
+        "code_hash_b58": "CjkRP25Vja4kBsAHo5pawjeTCZytazCP4txPcYjEEdux",
+        "what": "feature derivation on: signup requires base == v1.signer address (mpc_root, path base-1); new view chain_signature_base(account). Plain DeployContract, no init; state layout unchanged; pending ids 0/1 + settings verified unchanged."
+      }
+    ]
   },
-  "template0": {
-   "systemPromptHash": "0x061336f5ea19bd4b1f888a020a344175e41cab1a6e344d45436dba752b6a55d8",
-   "rubricHash(keccak schema.compact.json)": "0xb06401e2b6fa8cccc0f012109db17ee8d2c2161ab150d9609f36ae83bc39d0ef",
-   "lanes": [
-    {
-     "model": "moonshotai/kimi-k3",
-     "provider": "moonshotai",
-     "receiptKind": 1,
-     "headHash": "0x5ebd82b938564bf745049987e2beb20474f8a1b07d252642ea485a62d3b16745",
-     "tailHash": "0x68ed57aa9d2d1521ee26ac61eef966b09bbdc9dfbb7b523b14a11539acee85d0"
+  "base": {
+    "chainId": 8453,
+    "deployer": "0x3D5eb1F648F495fAEFaeBa0dE74A5c52b6602F5D",
+    "nearConfigOwner": "0x3D5eb1F648F495fAEFaeBa0dE74A5c52b6602F5D",
+    "timelock": 86400,
+    "enrollSigner": "0x7dd9b26E03E355D2C59e972A355C9303B8d1Dd94",
+    "signerIds": {
+      "0": "gateway ecdsa",
+      "1": "gateway ed25519",
+      "2": "DeepSeek TEE ecdsa",
+      "3": "DeepSeek TEE ed25519",
+      "4": "sponsor relay A 0x893DE9AAbd116E501Fe46466DF830251497FBdA7",
+      "5": "sponsor relay B 0x9Aa579Bcef7F8836CBF55bAfA4aceA69F1721cF6"
     },
-    {
-     "model": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
-     "provider": "deepseek",
-     "receiptKind": 2,
-     "headHash": "0xd8fd1137116d0b777d2c6c618ad507a030a9df91ed07d85c46fc22bf9c73b7d5",
-     "tailHash": "0xef2bcb0297388f180052c042153b3b563d5d31b514868567a41aeaf3a82d5555"
+    "template0": {
+      "systemPromptHash": "0x061336f5ea19bd4b1f888a020a344175e41cab1a6e344d45436dba752b6a55d8",
+      "rubricHash(keccak schema.compact.json)": "0xb06401e2b6fa8cccc0f012109db17ee8d2c2161ab150d9609f36ae83bc39d0ef",
+      "lanes": [
+        {
+          "model": "moonshotai/kimi-k3",
+          "provider": "moonshotai",
+          "receiptKind": 1,
+          "headHash": "0x5ebd82b938564bf745049987e2beb20474f8a1b07d252642ea485a62d3b16745",
+          "tailHash": "0x68ed57aa9d2d1521ee26ac61eef966b09bbdc9dfbb7b523b14a11539acee85d0"
+        },
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+          "provider": "deepseek",
+          "receiptKind": 2,
+          "headHash": "0xd8fd1137116d0b777d2c6c618ad507a030a9df91ed07d85c46fc22bf9c73b7d5",
+          "tailHash": "0xef2bcb0297388f180052c042153b3b563d5d31b514868567a41aeaf3a82d5555"
+        }
+      ]
+    },
+    "contracts": {
+      "SCL_EIP6565": {
+        "address": "0x4C10947994b0A0bA262Fc840EaBc3cE6e08FbbB2",
+        "tx": "0xd6f7f570ef7414ef25f22c25a591c6a6de8c118c24614bad73c9d458d01e8da7",
+        "block": 59998588,
+        "gasUsed": 2084542,
+        "basescan": "https://basescan.org/address/0x4C10947994b0A0bA262Fc840EaBc3cE6e08FbbB2#code",
+        "verified": true
+      },
+      "CageSeat": {
+        "address": "0x3DD3443ea1712CA30a9797Ea4DFD341641CEa5F1",
+        "tx": "0xe60cd13094bb61855ab2981e3132baf36feab178f935aded946ea6a72f76e4a5",
+        "block": 59998599,
+        "gasUsed": 913341,
+        "basescan": "https://basescan.org/address/0x3DD3443ea1712CA30a9797Ea4DFD341641CEa5F1#code",
+        "verified": true
+      },
+      "CageVotes": {
+        "address": "0x90dfe90aC041aB64d7302282885144605bedfA94",
+        "tx": "0xa46226d4b7b281c32392abb5df8c43f0945012317eccc67b5aec82e79e1786c9",
+        "block": 59998610,
+        "gasUsed": 235557,
+        "basescan": "https://basescan.org/address/0x90dfe90aC041aB64d7302282885144605bedfA94#code",
+        "verified": true
+      },
+      "CageSettle": {
+        "address": "0x404864C55e883D9b74be6FDfF5cFBcCD18d8fB58",
+        "tx": "0x44b8d48cd688a3468da8fc042e4af6fec38823ec3b4c2e0f1347a284fd426173",
+        "block": 59998617,
+        "gasUsed": 618967,
+        "basescan": "https://basescan.org/address/0x404864C55e883D9b74be6FDfF5cFBcCD18d8fB58#code",
+        "verified": true
+      },
+      "BotledNearConfig": {
+        "address": "0xAdb89C4fb606d346BA62F58C4B0e0F47c3e9F20a",
+        "tx": "0xa151c501b67139b33af0cfbb2a7d1bdccc51543554dcfd02cd83690d29dfeb7e",
+        "block": 59998627,
+        "gasUsed": 3445238,
+        "basescan": "https://basescan.org/address/0xAdb89C4fb606d346BA62F58C4B0e0F47c3e9F20a#code",
+        "verified": true
+      },
+      "BotledNearVerifier": {
+        "address": "0x5B649acd02838b33777FdBaEe49D9FC405A62483",
+        "tx": "0xeb112c4839c051b9a2cc329a7e87f9d452633a47c561517c4c83fcbdd8139e5b",
+        "block": 59998633,
+        "gasUsed": 2956309,
+        "basescan": "https://basescan.org/address/0x5B649acd02838b33777FdBaEe49D9FC405A62483#code",
+        "verified": true
+      },
+      "BotledRunnerPoolNear": {
+        "address": "0x4fE84CAe74039df848BEe0c7E7Dd9A4eAfaFf7EF",
+        "tx": "0x9cdef81afcbefda7773f73cec5937c20536347a5e6228815c47da70373c95440",
+        "block": 60030092,
+        "gasUsed": 2356345,
+        "params": {
+          "factory": "0xaa7Ee7d31c4fC44060b47C34c6AcaF2ea271F819",
+          "nearConfig": "0xAdb89C4fb606d346BA62F58C4B0e0F47c3e9F20a",
+          "rewardToken(AZL)": "0x931517E9502F9d52CDF6F5AC7fca7925e2A1BBA3",
+          "vrfWrapper": "0xb0407dbe851f8318bd31404A49e658143C982F23",
+          "maxConcurrent": 4,
+          "callbackGasBase": 100000,
+          "callbackGasPerJuror": 70000,
+          "requestConfirmations": 3
+        },
+        "basescan_verified": true,
+        "sourcify": "full match"
+      },
+      "BotledFactoryV5Near": {
+        "address": "0xaa7Ee7d31c4fC44060b47C34c6AcaF2ea271F819",
+        "tx": "0xa50bb3fca44764aba8ae2d65e6d3235956a2be72c390510c485e7d1e8f280df4",
+        "block": 60030102,
+        "gasUsed": 5421693,
+        "args": {
+          "config": "0x6A5785cc5e79Dc4c800367b54eA525c5e31040D7",
+          "nearConfig": "0xAdb89C4fb606d346BA62F58C4B0e0F47c3e9F20a",
+          "verifier": "0x5B649acd02838b33777FdBaEe49D9FC405A62483",
+          "pool": "0x4fE84CAe74039df848BEe0c7E7Dd9A4eAfaFf7EF",
+          "panelOwner": "0xF7E5A611154C8d30A03791409F2606C278597a04",
+          "microScope": "0x0",
+          "standardScope": "0x0"
+        },
+        "basescan_verified": false,
+        "basescan_note": "Etherscan bytecode mismatch (linked-library metadata of embedded cage impl); Sourcify full match",
+        "sourcify": "full match"
+      },
+      "BotledCageV5Near_implementation": {
+        "address": "0x14F7f6A60A96cce95575c5f3Bdf45277809546e4",
+        "created_by": "factory constructor (same tx)",
+        "micro": "0x905E561B44E76fdeAF5F41Bc2c46ebCE4E5E02fE",
+        "standard": "0x1003592A2eeF71b15A21457910007b38B0e2027A",
+        "operator": "0x...01 (locked)",
+        "basescan_verified": true,
+        "sourcify": "full match"
+      }
+    },
+    "script": "script/DeployBotledV5NearPhase1.s.sol",
+    "notDeployed": [
+      "cages (deployCage needs BotledConfig.isSupportedArbitration(standard); currently false)"
+    ],
+    "script_phase2": "script/DeployBotledV5NearPhase2.s.sol"
+  },
+  "attestation": "deploy/attestation-mainnet-20261120.json (4/4 ok, pins match)",
+  "public_repo": {
+    "target": "https://github.com/azzle-lab/botled",
+    "status": "public on github.com/azzle-lab/botled (branch main)",
+    "local_export": "/workspace/botled-public",
+    "local_commit": "1b8c5d0",
+    "secret_scan": "clean (14 known secret values: 0 hits; only public test keys present)"
+  },
+  "site": {
+    "vercel_team": "team_632GSWmCeqEpKhmr6SIaglpm",
+    "project": "botled",
+    "project_id": "prj_RBH493TRui2rjTeD01u5axI2kjBC",
+    "deployment_id": "dpl_FLithXxYuYUb3FickySTxgDLQT3K",
+    "url": "https://arb.azzle.org",
+    "aliases": [
+      "arb.azzle.org",
+      "botled-dabus123s-projects.vercel.app"
+    ],
+    "custom_domains": [],
+    "status_banner": "not live yet / do not sign up with real USDC (DEPLOYED=false)",
+    "previous_deployments": [
+      "dpl_3VxNqrpNPdBYNqEmyZFTmcw5V17H"
+    ],
+    "deployment": "dpl_JJsC3knRtZ8PgJ2rZ9tGxDo2UXYD",
+    "mode": "live on-chain reads (Base + NEAR), signup/bridge execution disabled until Monday",
+    "promptCommit": "02b72dce4a39a9d59199299b1e2ca4a8c25d70f6"
+  },
+  "v5Schritt1": {
+    "schritt": 1,
+    "executedAt": "2026-11-22 17:44:14 Europe/Berlin",
+    "note": "Daniel waived the Task 14 finalize prerequisite at 2026-11-22 17:41 Europe/Berlin and approved sending the two BotledConfig proposals immediately. Task 14 was still in JURY round 2 (not final) at send time.",
+    "botledConfig": "0x6A5785cc5e79Dc4c800367b54eA525c5e31040D7",
+    "timelockSec": 86400,
+    "proposeArbitration": {
+      "module": "0x1003592A2eeF71b15A21457910007b38B0e2027A",
+      "tx": "0xcfa36ad589bf981e8c966a2ee0f14390efb5d0aa367bd3af053e5b85616c2e01",
+      "block": 60877396,
+      "blockTimestamp": 1795365854,
+      "sentAtBerlin": "2026-11-22 17:44:14 Europe/Berlin",
+      "activeAt": 1795452254,
+      "activeAtBerlin": "2026-11-23 17:44:14 Europe/Berlin",
+      "status": "success, timelocked; isSupportedArbitration still false until eta"
+    },
+    "proposeParams": {
+      "fromParamsId": 0,
+      "rewardPerRound": "30e18",
+      "otherParamsUnchanged": true,
+      "tx": "0x5f59a5295109803910ae5a8dc21c5a49ce3319a751b0d6d75a196550d7b0a68c",
+      "block": 60877401,
+      "blockTimestamp": 1795365855,
+      "sentAtBerlin": "2026-11-22 17:44:15 Europe/Berlin",
+      "pendingParamsEta": 1795452255,
+      "activatableAtBerlin": "2026-11-23 17:44:15 Europe/Berlin",
+      "status": "success, timelocked; activateParams not called"
+    },
+    "configNote": "These proposals are on the existing v4 BotledConfig (needed before the first v5 cage can use the standard module and 30 AZL rewards)."
+  },
+  "v5Live": {
+    "paramsActive": {
+      "currentParamsId": 1,
+      "rewardPerRound": "30e18",
+      "note": "activated before 22:00 23.11 (by 18:00 routine)"
+    },
+    "standardModuleSupported": true,
+    "cage": {
+      "address": "0xf5992a45bb489F0b20F9da4c43F750f69878Dd2c",
+      "operator": "0x3D5eb1F648F495fAEFaeBa0dE74A5c52b6602F5D",
+      "templateId": 0,
+      "seatTx": "0x57096cd71eb2a28918ece6325301000a80f5b6edbbc2a9ac7d961ae2a6d0c201",
+      "seatBlock": 61387884,
+      "bonds": {
+        "micro": "1000e18",
+        "standard": "10000e18"
+      },
+      "pfand": "0.002 ETH",
+      "isSeated": true
+    },
+    "vrfFloat": {
+      "pool": "0x4fE84CAe74039df848BEe0c7E7Dd9A4eAfaFf7EF",
+      "amount": "0.001 ETH",
+      "sentAt": "2026-11-23 ~22:07 Europe/Berlin"
+    },
+    "relays": {
+      "status": "LIVE 2026-11-23 22:26 Berlin: both /health 200 over TLS on custom domains; NEAR_AI_API_KEY set by Daniel; redeploy dpl_DuGcCQfL1n1kAq8PKdBokeqfSUFk",
+      "vercelProject": "botled-relay (prj_QGwnrpMXTqSwltpTNXBXPNavmtOG)",
+      "deployment": "dpl_DuGcCQfL1n1kAq8PKdBokeqfSUFk",
+      "urls": {
+        "A": "https://relay-a.arb.azzle.org",
+        "B": "https://relay-b.arb.azzle.org"
+      },
+      "dnsCname": "9b6efa9c3d606e69.vercel-dns-016.com",
+      "seatStore": "Upstash Redis botledrelays (free, us-east-1), atomic SET NX claim per seat",
+      "nearFunding": {
+        "amountEach": "0.3 NEAR",
+        "from": "registry",
+        "date": "2026-11-23",
+        "registryAfter": "4.375 NEAR (storage 3.589)"
+      }
     }
-   ]
-  },
-  "contracts": {
-   "SCL_EIP6565": {
-    "address": "0x4C10947994b0A0bA262Fc840EaBc3cE6e08FbbB2",
-    "tx": "0xd6f7f570ef7414ef25f22c25a591c6a6de8c118c24614bad73c9d458d01e8da7",
-    "block": 59998588,
-    "gasUsed": 2084542,
-    "basescan": "https://basescan.org/address/0x4C10947994b0A0bA262Fc840EaBc3cE6e08FbbB2#code",
-    "verified": true
-   },
-   "CageSeat": {
-    "address": "0x3DD3443ea1712CA30a9797Ea4DFD341641CEa5F1",
-    "tx": "0xe60cd13094bb61855ab2981e3132baf36feab178f935aded946ea6a72f76e4a5",
-    "block": 59998599,
-    "gasUsed": 913341,
-    "basescan": "https://basescan.org/address/0x3DD3443ea1712CA30a9797Ea4DFD341641CEa5F1#code",
-    "verified": true
-   },
-   "CageVotes": {
-    "address": "0x90dfe90aC041aB64d7302282885144605bedfA94",
-    "tx": "0xa46226d4b7b281c32392abb5df8c43f0945012317eccc67b5aec82e79e1786c9",
-    "block": 59998610,
-    "gasUsed": 235557,
-    "basescan": "https://basescan.org/address/0x90dfe90aC041aB64d7302282885144605bedfA94#code",
-    "verified": true
-   },
-   "CageSettle": {
-    "address": "0x404864C55e883D9b74be6FDfF5cFBcCD18d8fB58",
-    "tx": "0x44b8d48cd688a3468da8fc042e4af6fec38823ec3b4c2e0f1347a284fd426173",
-    "block": 59998617,
-    "gasUsed": 618967,
-    "basescan": "https://basescan.org/address/0x404864C55e883D9b74be6FDfF5cFBcCD18d8fB58#code",
-    "verified": true
-   },
-   "BotledNearConfig": {
-    "address": "0xAdb89C4fb606d346BA62F58C4B0e0F47c3e9F20a",
-    "tx": "0xa151c501b67139b33af0cfbb2a7d1bdccc51543554dcfd02cd83690d29dfeb7e",
-    "block": 59998627,
-    "gasUsed": 3445238,
-    "basescan": "https://basescan.org/address/0xAdb89C4fb606d346BA62F58C4B0e0F47c3e9F20a#code",
-    "verified": true
-   },
-   "BotledNearVerifier": {
-    "address": "0x5B649acd02838b33777FdBaEe49D9FC405A62483",
-    "tx": "0xeb112c4839c051b9a2cc329a7e87f9d452633a47c561517c4c83fcbdd8139e5b",
-    "block": 59998633,
-    "gasUsed": 2956309,
-    "basescan": "https://basescan.org/address/0x5B649acd02838b33777FdBaEe49D9FC405A62483#code",
-    "verified": true
-   },
-   "BotledRunnerPoolNear": {
-    "address": "0x4fE84CAe74039df848BEe0c7E7Dd9A4eAfaFf7EF",
-    "tx": "0x9cdef81afcbefda7773f73cec5937c20536347a5e6228815c47da70373c95440",
-    "block": 60030092,
-    "gasUsed": 2356345,
-    "params": {
-     "factory": "0xaa7Ee7d31c4fC44060b47C34c6AcaF2ea271F819",
-     "nearConfig": "0xAdb89C4fb606d346BA62F58C4B0e0F47c3e9F20a",
-     "rewardToken(AZL)": "0x931517E9502F9d52CDF6F5AC7fca7925e2A1BBA3",
-     "vrfWrapper": "0xb0407dbe851f8318bd31404A49e658143C982F23",
-     "maxConcurrent": 4,
-     "callbackGasBase": 100000,
-     "callbackGasPerJuror": 70000,
-     "requestConfirmations": 3
-    },
-    "basescan_verified": true,
-    "sourcify": "full match"
-   },
-   "BotledFactoryV5Near": {
-    "address": "0xaa7Ee7d31c4fC44060b47C34c6AcaF2ea271F819",
-    "tx": "0xa50bb3fca44764aba8ae2d65e6d3235956a2be72c390510c485e7d1e8f280df4",
-    "block": 60030102,
-    "gasUsed": 5421693,
-    "args": {
-     "config": "0x6A5785cc5e79Dc4c800367b54eA525c5e31040D7",
-     "nearConfig": "0xAdb89C4fb606d346BA62F58C4B0e0F47c3e9F20a",
-     "verifier": "0x5B649acd02838b33777FdBaEe49D9FC405A62483",
-     "pool": "0x4fE84CAe74039df848BEe0c7E7Dd9A4eAfaFf7EF",
-     "panelOwner": "0xF7E5A611154C8d30A03791409F2606C278597a04",
-     "microScope": "0x0",
-     "standardScope": "0x0"
-    },
-    "basescan_verified": false,
-    "basescan_note": "Etherscan bytecode mismatch (linked-library metadata of embedded cage impl); Sourcify full match",
-    "sourcify": "full match"
-   },
-   "BotledCageV5Near_implementation": {
-    "address": "0x14F7f6A60A96cce95575c5f3Bdf45277809546e4",
-    "created_by": "factory constructor (same tx)",
-    "micro": "0x905E561B44E76fdeAF5F41Bc2c46ebCE4E5E02fE",
-    "standard": "0x1003592A2eeF71b15A21457910007b38B0e2027A",
-    "operator": "0x...01 (locked)",
-    "basescan_verified": true,
-    "sourcify": "full match"
-   }
-  },
-  "script": "script/DeployBotledV5NearPhase1.s.sol",
-  "notDeployed": [
-   "cages (deployCage needs BotledConfig.isSupportedArbitration(standard); currently false)"
-  ],
-  "script_phase2": "script/DeployBotledV5NearPhase2.s.sol"
- },
- "attestation": "deploy/attestation-mainnet-20261120.json (4/4 ok, pins match)",
- "public_repo": {
-  "target": "https://github.com/azzle-lab/botled",
-  "status": "public on github.com/azzle-lab/botled (branch main)",
-  "secret_scan": "clean (14 known secret values: 0 hits; only public test keys present)"
- },
- "site": {
-  "vercel_team": "team_632GSWmCeqEpKhmr6SIaglpm",
-  "project": "botled",
-  "project_id": "prj_RBH493TRui2rjTeD01u5axI2kjBC",
-  "deployment_id": "dpl_3VxNqrpNPdBYNqEmyZFTmcw5V17H",
-  "url": "https://arb.azzle.org",
-  "aliases": [
-   "arb.azzle.org",
-   "botled-dabus123s-projects.vercel.app"
-  ],
-  "custom_domains": [],
-  "status_banner": "not live yet / do not sign up with real USDC (DEPLOYED=false)"
- }
+  }
 }
