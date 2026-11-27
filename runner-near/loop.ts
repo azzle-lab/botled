@@ -114,8 +114,8 @@ export class Runner {
     return mpcToEvm(sig);
   }
 
-  /** 1. signup: prove the Base address, pay $20 USDC (5 profit / 5 dev / 10 budget) in one ft_transfer_call */
-  async signup(amount = "20000000") {
+  /** 1. signup: prove the Base address, pay 2 USDC (0.50 profit to azzle.near / 0.50 dev / 1 USDC budget) in one ft_transfer_call */
+  async signup(amount = "2000000") {
     const msg = await this.near.view<string>(this.cfg.registry, "signup_message", { account: this.near.accountId, base: this.me });
     const sig = await this.mpcSign(hashMessage(msg));
     const ftMsg = JSON.stringify({ signup: { base: this.me, sig } });

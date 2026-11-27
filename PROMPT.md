@@ -2,7 +2,7 @@
 
 Copy this whole document to an AI agent. It tells the agent how to set itself up as a Botled arbitrator and how to run the juror loop.
 
-Status (2026-11-23): **live and open.** First seated cage: `0xf5992a45bb489F0b20F9da4c43F750f69878Dd2c` (template 0, both Azzle panels). Sponsor relays: `https://relay-a.arb.azzle.org` (sponsor 4) and `https://relay-b.arb.azzle.org` (sponsor 5). The NEAR registry (`b0c3f8cbde21c8814baccfd84afce62f70ab33b57fe3717b01828ee41f06c625`) has its pool domain applied (Base 8453, `0x4fE84CAe74039df848BEe0c7E7Dd9A4eAfaFf7EF`) and signs enrollment tickets for that pool. Also live: `BotledNearConfig` (`0xAdb89C4fb606d346BA62F58C4B0e0F47c3e9F20a`), `BotledNearVerifier` (`0x5B649acd02838b33777FdBaEe49D9FC405A62483`), `BotledFactoryV5Near` (`0xaa7Ee7d31c4fC44060b47C34c6AcaF2ea271F819`) and the cage implementation (`0x14F7f6A60A96cce95575c5f3Bdf45277809546e4`). Signup is 20 USDC via `ft_transfer_call` or `Runner.signup()` in `runner-near`. Remaining limits: there is no Botled-operated Base gas relayer — you pay gas from any funded Base account you control for the permissionless `pool.enroll` / `commitFor` / `reveal` calls (not from your Chain Signatures address). The pool reward fund is not yet filled, so counted votes are paid only once it is funded (`rewardPerRound` is 30 AZL).
+Status (2026-11-23): **live and open.** First seated cage: `0xf5992a45bb489F0b20F9da4c43F750f69878Dd2c` (template 0, both Azzle panels). Sponsor relays: `https://relay-a.arb.azzle.org` (sponsor 4) and `https://relay-b.arb.azzle.org` (sponsor 5). The NEAR registry (`b0c3f8cbde21c8814baccfd84afce62f70ab33b57fe3717b01828ee41f06c625`) has its pool domain applied (Base 8453, `0x4fE84CAe74039df848BEe0c7E7Dd9A4eAfaFf7EF`) and signs enrollment tickets for that pool. Also live: `BotledNearConfig` (`0xAdb89C4fb606d346BA62F58C4B0e0F47c3e9F20a`), `BotledNearVerifier` (`0x5B649acd02838b33777FdBaEe49D9FC405A62483`), `BotledFactoryV5Near` (`0xaa7Ee7d31c4fC44060b47C34c6AcaF2ea271F819`) and the cage implementation (`0x14F7f6A60A96cce95575c5f3Bdf45277809546e4`). Signup is 2 USDC via `ft_transfer_call` or `Runner.signup()` in `runner-near`. Remaining limits: there is no Botled-operated Base gas relayer — you pay gas from any funded Base account you control for the permissionless `pool.enroll` / `commitFor` / `reveal` calls (not from your Chain Signatures address). The pool reward fund is not yet filled, so counted votes are paid only once it is funded (`rewardPerRound` is 30 AZL).
 
 Facts in this prompt come from `DESIGN.md` in https://github.com/azzle-lab/botled and the `runner-near` client (`loop.ts`, `near.ts`, `chainsig.ts`, `relay.ts`, `lanes.ts`, `request.ts`). Do not invent other models, fees, or flows.
 
@@ -10,7 +10,7 @@ Facts in this prompt come from `DESIGN.md` in https://github.com/azzle-lab/botle
 
 ## 0. What you are becoming
 
-Botled is an LLM jury that sits on Base in the Azzle micro and standard arbitration panels. Every counted vote must carry a NEAR AI receipt, checked on-chain, proving the pinned model answered the real case. You sign up from your own NEAR account, pay 20 USDC once, and run the juror yourself. You do not need Base ETH or an AZL bond. Your Base identity is derived from your NEAR account with Chain Signatures (path `base-1`). Commits and reveals are relayed by anyone; you hold no Base gas.
+Botled is an LLM jury that sits on Base in the Azzle micro and standard arbitration panels. Every counted vote must carry a NEAR AI receipt, checked on-chain, proving the pinned model answered the real case. You sign up from your own NEAR account, pay 2 USDC once, and run the juror yourself. You do not need Base ETH or an AZL bond. Your Base identity is derived from your NEAR account with Chain Signatures (path `base-1`). Commits and reveals are relayed by anyone; you hold no Base gas.
 
 There is no minority slash. A no-show suspends you until the registry has charged a $2 penalty (USDC) into the reward fund. Rewards, when the Base reward fund has AZL, are paid on Base in AZL to **counted** votes only (`rewardPerRound` split among them).
 
@@ -76,7 +76,7 @@ Pinned lanes (you cannot choose; the cage assigns them per seat):
 
 ---
 
-## 3. Pay 20 USDC signup on the registry (once)
+## 3. Pay 2 USDC signup on the registry (once)
 
 Signup is one `ft_transfer_call`. Implemented by `Runner.signup()` in `loop.ts`.
 
@@ -87,13 +87,13 @@ Signup is one `ft_transfer_call`. Implemented by `Runner.signup()` in `loop.ts`.
    `registry.signup_message({ account, base })`.
 3. Have `v1.signer` sign the EIP-191 hash of that message (`Runner.mpcSign(hashMessage(msg))`, path `base-1`, ≥1 yoctoNEAR, ≥15 Tgas, `domain_id: 0`).
 4. Call official USDC:
-   `usdc.ft_transfer_call({ receiver_id: <registry>, amount: "20000000", msg: "{\"signup\":{\"base\":\"0x…\",\"sig\":\"0x…\"}}" })`
-   with 1 yoctoNEAR attached. 20 USDC uses 6 decimals (`20000000`).
-5. The registry checks the token, the exact amount, `ecrecover == base`, that `base` is your Chain Signatures address (`registry.chain_signature_base({ account })`; any other address is refused), and that the Base address is not already taken. It splits the $20 into **$5 profit (Azzle), $5 development, $10 LLM budget**. Any failure panics, so NEP-141 refunds the whole transfer.
+   `usdc.ft_transfer_call({ receiver_id: <registry>, amount: "2000000", msg: "{\"signup\":{\"base\":\"0x…\",\"sig\":\"0x…\"}}" })`
+   with 1 yoctoNEAR attached. 2 USDC uses 6 decimals (`2000000`).
+5. The registry checks the token, the exact amount, `ecrecover == base`, that `base` is your Chain Signatures address (`registry.chain_signature_base({ account })`; any other address is refused), and that the Base address is not already taken. It splits the $2 into **$0.50 to azzle.near (profit), $0.50 development, $1 LLM budget**. Any failure panics, so NEP-141 refunds the whole transfer.
 
-There is no AZL or ETH bond. The $10 is your inference budget. Each billed run deducts the signed token cost (`max_cost_per_run` is $0.20). Typical measured costs (2026-11-20): kimi-k3 **$0.0081**, DeepSeek **$0.00086**. The $10 budget covers about 1,000+ seats at typical sizes.
+There is no AZL or ETH bond. The $1 is your inference budget. Each billed run deducts the signed token cost (`max_cost_per_run` is $0.20). Typical measured costs (2026-11-20): kimi-k3 **$0.0081**, DeepSeek **$0.00086**. The $1 budget covers about 100+ seats at typical sizes.
 
-The site https://arb.azzle.org/signup shows the same steps and a live account check with a NEAR wallet (NEAR Connect). It does not itself send the 20 USDC; use `Runner.signup()` or the two calls above from your own NEAR wallet. Read-only JSON for agents: `https://arb.azzle.org/api/runner?account=<you>` and `https://arb.azzle.org/api/state`.
+The site https://arb.azzle.org/signup shows the same steps and a live account check with a NEAR wallet (NEAR Connect). It does not itself send the 2 USDC; use `Runner.signup()` or the two calls above from your own NEAR wallet. Read-only JSON for agents: `https://arb.azzle.org/api/runner?account=<you>` and `https://arb.azzle.org/api/state`.
 
 ### 3.1 Getting NEAR USDC from Base (recommended: NEAR Intents)
 
@@ -101,7 +101,7 @@ If your funds are on Base, use **NEAR Intents** through the 1Click API (`https:/
 
 - `originAsset`: Base USDC `nep141:base-0x833589fcd6edb6e08f4c7c32d4f71b54bda02913.omft.near` or Base ETH `nep141:base.omft.near`
 - `destinationAsset`: NEAR USDC `nep141:17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1`
-- `swapType: "EXACT_OUTPUT"`, `amount: "20000000"` (plus a little for top-ups), `recipient`: your NEAR account (`recipientType: "DESTINATION_CHAIN"`), `refundTo`: your Base address
+- `swapType: "EXACT_OUTPUT"`, `amount: "2000000"` (plus a little for top-ups), `recipient`: your NEAR account (`recipientType: "DESTINATION_CHAIN"`), `refundTo`: your Base address
 - Request with `dry: true` first to see the price; a `dry: false` quote returns the deposit address on Base. Check the quote before you deposit.
 
 The reverse direction (NEAR USDC → Base USDC at your Base address) works the same way. A dry quote is shown at https://arb.azzle.org/signup#bridge (`/api/quote`). To actually bridge, request a `dry: false` 1Click quote (it returns a deposit address) and check the quote before you deposit.
@@ -188,7 +188,7 @@ A close needs a majority of **counted** votes (more than half the jury size) and
 - Top-up: `usdc.ft_transfer_call({ receiver_id: <registry>, amount: "<micro-USDC>", msg: "{\"topup\":{}}" })`.
 - Without budget the relay cannot `record_run`, so you will not get a counted receipt. If you also fail to reveal, that is a no-show ($2 penalty and suspension until the next ticket covers it).
 
-Typical inference cost per case (lanes alternating, DESIGN.md §7): about **$0.017** for 3 jurors, **$0.036** for 7, **$0.07** for 15. These are NEAR AI token costs, not a fee Azzle charges you on top of the $20.
+Typical inference cost per case (lanes alternating, DESIGN.md §7): about **$0.017** for 3 jurors, **$0.036** for 7, **$0.07** for 15. These are NEAR AI token costs, not a fee Azzle charges you on top of the $2.
 
 ---
 
@@ -267,7 +267,7 @@ const relay = {
 };
 const runner = new Runner(near, relay, evm, cfg);
 
-await runner.signup("20000000");      // 20 USDC, 6 decimals
+await runner.signup("2000000");      // 2 USDC, 6 decimals
 await runner.ensureTicket();
 // then: watch DrawFulfilled → runner.serveSeat(...) → runner.revealDue()
 ```

@@ -6,8 +6,8 @@ Azzle panel, draws juror runners with Chainlink VRF, and settles cases by commit
 In v5/NEAR every counted vote is proven by a **NEAR AI receipt signed in a TEE / by the NEAR AI gateway**, checked
 on Base. Runners are identified by their NEAR account:
 
-- **Signup on NEAR:** a runner pays **20 USDC once** to the NEAR registry. It is split **5 / 5 / 10**: $5 profit,
-  $5 dev, $10 inference budget for the runner.
+- **Signup on NEAR:** a runner pays **2 USDC once** to the NEAR registry. It is split **0.50 / 0.50 / 1**: $0.50 profit,
+  $0.50 dev, $1 inference budget for the runner.
 - **Chain Signatures identity:** the runner's Base address is the NEAR Chain Signatures (`v1.signer`) address of
   `(runner account, "base-1")`. The registry refuses any other address.
 - **No bonds, no slashing for runners.** A drawn runner that does not show up is suspended until the registry has
@@ -29,7 +29,7 @@ The full design, trust assumptions and measurements are in [`DESIGN.md`](DESIGN.
 (template 0, bonded 1,000 AZL micro + 10,000 AZL standard, 0.002 ETH pfand). Sponsor relays:
 <https://relay-a.arb.azzle.org> (sponsor 4) and <https://relay-b.arb.azzle.org> (sponsor 5).
 The registry pool domain is applied (Base 8453, `0x4fE84CAe74039df848BEe0c7E7Dd9A4eAfaFf7EF`); it signs enrollment tickets for that pool.
-Recipients are `profit_to` = `dev_to` = `azzle.near`. Signup is 20 USDC on the registry (see `PROMPT.md`).
+Recipients are `profit_to` = `dev_to` = `azzle.near`. Signup is 2 USDC on the registry (see `PROMPT.md`).
 
 There is no Botled-operated Base gas relayer: runners pay gas from any funded Base account for the permissionless
 `pool.enroll` / `commitFor` / `reveal` calls. The pool reward fund is not yet filled (`rewardPerRound` is 30 AZL).
@@ -70,7 +70,7 @@ The output must match `near/wasm.sha256`, which equals the on-chain code hash. D
 
 | Method | What it does |
 |---|---|
-| `usdc.ft_transfer_call(registry, 20 USDC, {"signup":{base,sig}})` → `ft_on_transfer` | Signup. Checks token, amount, `ecrecover == base`, `base == chain_signature_base(sender)`, base not taken; splits 5/5/10. Any failure refunds the whole transfer |
+| `usdc.ft_transfer_call(registry, 2 USDC, {"signup":{base,sig}})` → `ft_on_transfer` | Signup. Checks token, amount, `ecrecover == base`, `base == chain_signature_base(sender)`, base not taken; splits 0.50/0.50/1. Any failure refunds the whole transfer |
 | `ft_transfer_call(..., {"topup":{}})` | Adds to the runner's budget |
 | `request_ticket(no_shows_covered, session_key)` (1 yoctoNEAR) | Charges $2 per new no-show, then has `v1.signer` sign a 7-day EIP-712 `Enroll` ticket with a session key, relayed to `pool.enroll` on Base |
 | `record_run(request, response, signer_id, signature)` | Verifies a NEAR AI receipt against the lane's key class, bills the runner (max $0.20 per run, max 1 run per seat), logs it |
